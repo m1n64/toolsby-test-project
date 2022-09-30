@@ -1,0 +1,28 @@
+@import "~toastify-js/src/toastify.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.nav-link {
+    @apply cursor-pointer text-white transition duration-150 border-b-4 border-solid border-b-transparent hover:border-b-red-600;
+}
+
+.block-caption {
+    @apply font-bold my-2 text-lg;
+}
+
+.loading-text {
+    @apply flex justify-center my-10 text-3xl;
+}
+
+.main-table {
+    @apply table-auto w-full border-2 border-solid border-gray-400;
+}
+
+.main-table > thead > tr {
+    @apply text-left p-4 bg-gray-300;
+}
+
+.main-table > tbody > tr {
+    @apply odd:bg-white even:bg-slate-100;
+}

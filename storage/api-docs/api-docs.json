@@ -1,0 +1,166 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Tools.by test REST API",
+        "description": "Tools by api",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "/api"
+        }
+    ],
+    "paths": {
+        "/flights/pallets": {
+            "get": {
+                "tags": [
+                    "Flights"
+                ],
+                "description": "Get all pallets",
+                "operationId": "All pallets",
+                "responses": {
+                    "200": {
+                        "description": "Success Answer",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": "true"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": ""
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/Auto"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/flights/final": {
+            "get": {
+                "tags": [
+                    "Flights"
+                ],
+                "description": "Get final sum",
+                "operationId": "Final sum",
+                "responses": {
+                    "200": {
+                        "description": "Success Answer",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": "true"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": ""
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/FinalSum"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "FinalSum": {
+                "title": "FinalSum",
+                "description": "Final Sum model",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "example": "badge name"
+                    },
+                    "cars": {
+                        "type": "integer",
+                        "example": "0"
+                    },
+                    "pallets": {
+                        "type": "integer",
+                        "example": "0"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "FinalSum"
+                }
+            },
+            "Auto": {
+                "title": "Auto",
+                "description": "Auto model",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "name": {
+                        "type": "string",
+                        "example": "badge name"
+                    },
+                    "type": {
+                        "type": "string",
+                        "example": "pallet"
+                    },
+                    "pallets": {
+                        "type": "integer",
+                        "example": "0"
+                    },
+                    "start_time": {
+                        "type": "integer",
+                        "example": "1662015831"
+                    },
+                    "actual_date": {
+                        "type": "string",
+                        "format": "date",
+                        "example": "2022.09.01"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Auto"
+                }
+            }
+        },
+        "securitySchemes": {
+            "apiAuth": {
+                "type": "http",
+                "description": "Login with email and password to get the authentication token",
+                "name": "Token based Based",
+                "in": "header",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Flights",
+            "description": "API Endpoints for Flignts"
+        }
+    ]
+}
